@@ -163,19 +163,6 @@ jobs:
       - name: Obtener el código del repositorio
         uses: actions/checkout@v4
 
-      - name: Verificar estructura del directorio
-        run: |
-          echo "Mostrando estructura del directorio..."
-          pwd
-          ls -la
-          if [ -d "tests" ]; then
-            echo "Directorio tests encontrado."
-            ls -la tests
-          else
-            echo "Error: Directorio tests no encontrado."
-            exit 1
-          fi
-
       - name: Preparar Docker Buildx
         uses: docker/setup-buildx-action@v3
 
@@ -210,8 +197,8 @@ jobs:
 
       - name: Ejecutar pruebas automáticas y generar reporte HTML
         run: |
-          echo "Cambiando al directorio tests..."
-          cd tests || { echo "Error: No se pudo cambiar al directorio tests"; exit 1; }
+          echo "Cambiando al directorio test..."
+          cd test || { echo "Error: No se pudo cambiar al directorio test"; exit 1; }
           echo "Ejecutando pruebas..."
           pytest test_app.py --html=report/report.html --self-contained-html -v || echo "Pruebas fallaron, revisa el reporte."
 
