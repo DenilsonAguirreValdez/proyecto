@@ -192,7 +192,7 @@ jobs:
 
       - name: Comprobar conexión a MySQL
         run: |
-          echo "Comprobando conexión a MySQL..."
+          echo "Comprobando conexión a MySQL"
           docker exec flask python -c "import mysql.connector; conn = mysql.connector.connect(host='mysql', user='user', password='userpassword', database='testdb'); print('Conexión exitosa' if conn.is_connected() else 'Fallo en la conexión'); conn.close()" || echo "Fallo al conectar a MySQL, revisa los logs."
 
       - name: Ejecutar pruebas automáticas y generar reporte HTML
