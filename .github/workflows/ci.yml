@@ -207,4 +207,4 @@ jobs:
         if: always()
         with:
           name: reporte-pruebas
-          path: tests/report/report.html
+          path: test/report/report.html
